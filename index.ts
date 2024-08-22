@@ -1,4 +1,4 @@
-import express, {Application, Request, Response, NextFunction } from "express";
+import express, { Application, Request, Response, NextFunction } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { connectDB } from "./configs/db";
@@ -45,6 +45,7 @@ interface ErrorObject extends Error {
 			) => {
 				console.error(error);
 				res.status(error.status || 500).send({
+					success: false,
 					message: error.message || "Internal Server Error!",
 				});
 			}
